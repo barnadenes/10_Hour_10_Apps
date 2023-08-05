@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 4rem;
+    margin-top: -10rem;
+    font-weight: bold;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+    background-image: url('https://wallpapers.com/images/featured/neon-qrmwb65rtvlrzu8q.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.countdown-container {
+    display: flex;
+    text-align: center;
+}
+
+.big-text {
+    font-size: 6rem;
+    line-height: 1;
+    margin: 0 2rem;
+    font-weight: lighter;
+}
+
+span {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
