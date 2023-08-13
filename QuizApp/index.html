@@ -10,31 +10,31 @@
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <script src="index.js"></script>
   </head>
   <body>
     <div class="quiz-container">
       <div class="header">
-        <h3>Question Text</h3>
-        <small>smoll</small>
+        <h3 id="question-text">Question Text</h3>
+        <small class="hide">Today's Quiz</small>
       </div>
       <div class="questions">
-        <ul>
+        <ul class="hide">
           <li>
-            <input type="radio" id="a" name="answer" /><label for="a"></label>
+            <input type="radio" class="input-check" id="a" name="answer" /><label id="qa" for="a"></label>
           </li>
           <li>
-            <input type="radio" id="b" name="answer" /><label for="b"></label>
+            <input type="radio" class="input-check" id="b" name="answer" /><label id="qb" for="b"></label>
           </li>
           <li>
-            <input type="radio" id="c" name="answer" /><label for="c"></label>
+            <input type="radio" class="input-check" id="c" name="answer" /><label id="qc" for="c"></label>
           </li>
           <li>
-            <input type="radio" id="d" name="answer" /><label for="d"></label>
+            <input type="radio" class="input-check" id="d" name="answer" /><label id="qd" for="d"></label>
           </li>
         </ul>
       </div>
-      <button>Next Question</button>
+      <button class="hide" onclick="nextQuestion()">Next Question</button>
     </div>
+    <script src="index.js"></script>
   </body>
 </html>

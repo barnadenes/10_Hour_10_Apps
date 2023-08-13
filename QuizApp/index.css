@@ -55,3 +55,7 @@ button {
 button:hover {
     background-color: rgb(235, 168, 80);
 }
+
+label {
+    padding-left: 15px;
+}
