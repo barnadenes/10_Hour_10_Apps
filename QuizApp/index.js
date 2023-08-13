@@ -56,20 +56,28 @@ function init() {
 
 function nextQuestion() {
     isChecked(i);
+    i ++;
     if(isTrue === false) {
         return;
     }
-
-    question.innerHTML = QuizData[i].question;
-    a.innerHTML = QuizData[i].a;
-    b.innerHTML = QuizData[i].b;
-    c.innerHTML = QuizData[i].c;
-    d.innerHTML = QuizData[i].d;
-    i ++;
+    else if(i == 4) {
+        let hideEl = document.querySelectorAll('.hide');
+        question.innerHTML = `Your score is ${score} / ${maxScore} `;
+        for (let i = 0; i < hideEl.length; ++i) {
+            hideEl[i].style.display = "none";
+          }
+          return;
+    }
+    else {
+        question.innerHTML = QuizData[i].question;
+        a.innerHTML = QuizData[i].a;
+        b.innerHTML = QuizData[i].b;
+        c.innerHTML = QuizData[i].c;
+        d.innerHTML = QuizData[i].d;   
+    }
 }
 
 function isChecked(num) {
-    done();
     let selected = undefined;
 
     inputSet.forEach(input => {
@@ -87,13 +95,6 @@ function isChecked(num) {
 
     if(!isTrue) {
         alert("Please select an option!");
-    }
-}
-
-function done() {
-    if(i == 4) {
-        question.innerHTML = `Your score is ${score} / ${maxScore} `;
-        document.querySelectorAll(".hide").style.display = "none";
     }
 }
 
