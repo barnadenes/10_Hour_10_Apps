@@ -80,7 +80,8 @@ h3 {
 }
 
 .meals {
-    padding: 1.7rem;
+    margin: 1.7rem;
+    box-shadow: 0 3px 5px grey;
 }
 
 .daily-meal {
@@ -100,11 +101,60 @@ h3 {
     font-size: smaller;
 }
 
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-header h3 {
+    padding-left: 0;
+    padding-bottom: 0;
+}
+
+.personal-meal {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    background-image: linear-gradient(to right, #16adaf 0%, #b48bc0 100%);
+    margin-bottom: 1rem;
+    max-height: 12rem;
+    height: 247px;
+    border-radius: 10px;
+    padding: 1rem;
+    padding-top: 0;
+    color: white;
+}
+
+.personal-meal button {
+    position: absolute;
+    left: 85px;
+    bottom: 40px;
+    padding: 0.7rem 2rem;
+    border-color: white;
+    border-radius: 50px;
+    background-color: transparent;
+    color: white;
+    cursor: pointer;
+}
+
+.personal-meal span i {
+    cursor: pointer;
+}
+
 .meals .daily-meal img{
     width: 360px;
 }
 
+.rating {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
 
+.rating button i {
+    cursor: pointer;
+}
 
 ul {
     list-style-type: none;
