@@ -148,12 +148,12 @@ h3 {
 
 .rating {
     display: flex;
-    justify-content: space-between;
     padding: 1rem;
 }
 
-.rating button i {
+.rating button {
     cursor: pointer;
+    margin: 0 0 0 auto;
 }
 
 ul {
