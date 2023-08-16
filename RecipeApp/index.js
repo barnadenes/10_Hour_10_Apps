@@ -1,5 +1,6 @@
 let dailyMealEl = document.getElementById('daily-meal');
 let footerEl = document.getElementById('rating');
+let favoriteEl = document.getElementById('meal-ul');
 
 async function getRandomMeal() {
     const resp = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
@@ -18,10 +19,6 @@ async function getMealBySearch(meal) {
 }
 
 function addMeal(mealData, random = false) {
-    const mealEl = document.createElement('div');
-    mealEl.classList.add('creation');
-    const footEl = document.createElement('div');
-    footEl.classList.add('creation');
 
     dailyMealEl.innerHTML = `${random ? `<span class="random">Recipe of the day</span>` : ''}`+
     `<img
@@ -31,12 +28,24 @@ function addMeal(mealData, random = false) {
 
     footerEl.innerHTML = 
     `<h5>${mealData.strMeal}</h5>
-    <button>
-        <i class="far fa-heart"></i>
+    <button class="fav-btn">
+        <i class="fas fa-heart"></i>
     </button>`
 
-    dailyMealEl.appendChild(mealEl);
-    footerEl.appendChild(footEl);
+    const btnEL = document.querySelector('.fav-btn');
+
+    btnEL.addEventListener('click', () => {
+        btnEL.classList.toggle("active");
+    })
+}
+
+
+function addMealToLS(meal) {
+
+}
+
+function getMealFromLS() {
+    const mealIds = localStorage.getItem('mealIds');
 }
 
 getRandomMeal();
