@@ -66,11 +66,11 @@ function addMealToFav(mealData) {
 function addMealToLS(mealID) {
     const mealIds = getMealFromLS();
 
-    localStorage.setItem('mealIds', [...mealIds, mealID]);
+    localStorage.setItem('mealIds', JSON.stringify([...mealIds, mealID]));
 }
 
 function getMealFromLS() {
-    const mealIds = localStorage.getItem('mealIds');
+    const mealIds = localStorage.getItem("mealIds");
 
     return mealIds === null ? [] : mealIds;
 }
@@ -78,19 +78,18 @@ function getMealFromLS() {
 function removeMealFromlS(mealID) {
     const mealIds = getMealFromLS();
 
-    localStorage.setItem('mealIds', mealIds.filter(id => id !== mealID));
+    localStorage.setItem('mealIds', JSON.stringify(mealIds.filter(id => id !== mealID)));
 }
 
 async function fetchFavMeals() {
     const mealIds = getMealFromLS();
-    const meals = [];
 
     for (let i = 0; i < mealIds.length; i++) {
-        const mealId = mealIds[i];  
-        const meal = await getMealById(mealId);
+        const mealId = mealIds[i];
+        meal = await getMealById(mealId);
 
         addMealToFav(meal);
-    }
+    }    
 }
 
 getRandomMeal();
