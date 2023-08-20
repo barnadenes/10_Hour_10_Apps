@@ -70,7 +70,7 @@ function addMealToLS(mealID) {
 }
 
 function getMealFromLS() {
-    const mealIds = localStorage.getItem("mealIds");
+    const mealIds = JSON.parse(localStorage.getItem("mealIds"));
 
     return mealIds === null ? [] : mealIds;
 }
@@ -82,6 +82,8 @@ function removeMealFromlS(mealID) {
 }
 
 async function fetchFavMeals() {
+    favoriteEl.innerHTML = '';
+
     const mealIds = getMealFromLS();
 
     for (let i = 0; i < mealIds.length; i++) {
