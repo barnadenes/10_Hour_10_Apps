@@ -1,6 +1,6 @@
-let dailyMealEl = document.getElementById('daily-meal');
-let footerEl = document.getElementById('rating');
-let favoriteEl = document.getElementById('meal-ul');
+const dailyMealEl = document.getElementById('daily-meal');
+const footerEl = document.getElementById('rating');
+const favoriteEl = document.getElementById('meal-ul');
 
 async function getRandomMeal() {
     const resp = await fetch("https://www.themealdb.com/api/json/v1/1/random.php");
@@ -11,7 +11,12 @@ async function getRandomMeal() {
 }
 
 async function getMealById(id) {
-    const meal = await fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id);
+    const resp = await fetch("https://www.themealdb.com/api/json/v1/1/lookup.php?i=" + id);
+
+    const resData = await resp.json();
+    const meal = resData.meals[0];
+
+    return meal;
 }
 
 async function getMealBySearch(meal) {
@@ -35,17 +40,58 @@ function addMeal(mealData, random = false) {
     const btnEL = document.querySelector('.fav-btn');
 
     btnEL.addEventListener('click', () => {
-        btnEL.classList.toggle("active");
+        if(btnEL.classList.contains('active')) {
+            removeMealFromlS(mealData.idMeal)
+            btnEL.classList.remove("active");
+        }
+        else {
+            addMealToLS(mealData.idMeal)
+            btnEL.classList.add("active");
+        }
     })
 }
 
+function addMealToFav(mealData) {
 
-function addMealToLS(meal) {
+    favoriteEl.innerHTML += `<li>
+    <img
+      src="${mealData.strMealThumb}
+                "
+      alt="${mealData.strMeal}"
+    /><span>${mealData.strMeal}</span>
+  </li>`
 
+}
+
+function addMealToLS(mealID) {
+    const mealIds = getMealFromLS();
+
+    localStorage.setItem('mealIds', [...mealIds, mealID]);
 }
 
 function getMealFromLS() {
     const mealIds = localStorage.getItem('mealIds');
+
+    return mealIds === null ? [] : mealIds;
+}
+
+function removeMealFromlS(mealID) {
+    const mealIds = getMealFromLS();
+
+    localStorage.setItem('mealIds', mealIds.filter(id => id !== mealID));
+}
+
+async function fetchFavMeals() {
+    const mealIds = getMealFromLS();
+    const meals = [];
+
+    for (let i = 0; i < mealIds.length; i++) {
+        const mealId = mealIds[i];  
+        const meal = await getMealById(mealId);
+
+        addMealToFav(meal);
+    }
 }
 
 getRandomMeal();
+fetchFavMeals();
