@@ -78,17 +78,17 @@ function getMealFromLS() {
 function removeMealFromlS(mealID) {
     const mealIds = getMealFromLS();
 
-    localStorage.setItem('mealIds', JSON.stringify(mealIds.filter(id => id !== mealID)));
+    localStorage.setItem('mealIds', JSON.stringify(mealIds.filter((id) => id !== mealID)));
 }
 
-async function fetchFavMeals() {
+function fetchFavMeals() {
     favoriteEl.innerHTML = '';
 
     const mealIds = getMealFromLS();
 
     for (let i = 0; i < mealIds.length; i++) {
         const mealId = mealIds[i];
-        meal = await getMealById(mealId);
+        meal = getMealById(mealId);
 
         addMealToFav(meal);
     }    
