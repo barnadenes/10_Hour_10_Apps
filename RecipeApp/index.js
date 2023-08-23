@@ -51,27 +51,43 @@ function addMeal(mealData, random = false) {
     })
 }
 
+
+
 function onprogress() {
 
 }
 
 function addMealToFav(mealData) {
+    const liEl = document.createElement('li');
+    favoriteEl.appendChild(liEl);
+    const imgEl = document.createElement('img');
 
-    favoriteEl.innerHTML += `<li>
-    <img
-      src="${mealData.strMealThumb}
-                "
-      alt="${mealData.strMeal}"
-      title="${mealData.strMeal}"
-    /><span title="${mealData.strMeal}" >${mealData.strMeal}</span>
-    <button class="fav-cancel" id="${mealData.idMeal}" ><i class="fa-solid fa-x"></i></button>
-  </li>`
+    imgEl.setAttribute('src', `${mealData.strMealThumb}`);
+    imgEl.setAttribute('alt', `${mealData.strMeal}`);
+    imgEl.setAttribute('title', `${mealData.strMeal}`);
+    liEl.appendChild(imgEl);
 
-    const cancelBtn = document.getElementById(`${mealData.idMeal}`);
+    const spanEl = document.createElement('span');
 
-    cancelBtn.addEventListener('click', () => {
+    spanEl.setAttribute('title', `${mealData.strMeal}`);
+    spanEl.innerHTML = `${mealData.strMeal}`;
+    liEl.append(spanEl);
+
+
+    const buttonEl = document.createElement('button');
+
+    buttonEl.setAttribute('class', 'fav-cancel');
+    buttonEl.setAttribute('id', `${mealData.idMeal}`);
+    liEl.append(buttonEl);
+
+    const iconEl = document.createElement('i');
+
+    iconEl.setAttribute('class', 'fa-solid fa-x');
+    buttonEl.appendChild(iconEl);
+
+    buttonEl.addEventListener('click', () => {
         removeMealFromlS(mealData.idMeal);
-    })
+    });
 
 }
 
@@ -94,20 +110,20 @@ function removeMealFromlS(mealID) {
         "mealIds",
         JSON.stringify(mealIds.filter((id) => id !== mealID))
     );
-    
+
     fetchFavMeals();
 }
 
 async function fetchFavMeals() {
     favoriteEl.innerHTML = '';
 
-    const mealIds = getMealFromLS();
+    let mealIds = getMealFromLS();
 
     for (let i = 0; i < mealIds.length; i++) {
-        const mealId = mealIds[i];
+        let mealId = mealIds[i];
         meal = await getMealById(mealId);
 
-        addMealToFav(meal);
+        addMealToFav(meal, true);
     }    
 }
 
