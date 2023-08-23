@@ -38,17 +38,21 @@ function addMeal(mealData, random = false) {
     </button>`
 
     const btnEL = document.querySelector('.fav-btn');
+    const ls = getMealFromLS();
 
     btnEL.addEventListener('click', () => {
-        if(btnEL.classList.contains('active')) {
-            removeMealFromlS(mealData.idMeal)
-            btnEL.classList.remove("active");
+        if(!ls.includes(mealData.idMeal)) {
+            addMealToLS(mealData.idMeal)
+            fetchFavMeals();
         }
         else {
-            addMealToLS(mealData.idMeal)
-            btnEL.classList.add("active");
+            
         }
     })
+}
+
+function onprogress() {
+
 }
 
 function addMealToFav(mealData) {
@@ -58,8 +62,16 @@ function addMealToFav(mealData) {
       src="${mealData.strMealThumb}
                 "
       alt="${mealData.strMeal}"
-    /><span>${mealData.strMeal}</span>
+      title="${mealData.strMeal}"
+    /><span title="${mealData.strMeal}" >${mealData.strMeal}</span>
+    <button class="fav-cancel" id="${mealData.idMeal}" ><i class="fa-solid fa-x"></i></button>
   </li>`
+
+    const cancelBtn = document.getElementById(`${mealData.idMeal}`);
+
+    cancelBtn.addEventListener('click', () => {
+        removeMealFromlS(mealData.idMeal);
+    })
 
 }
 
@@ -78,7 +90,12 @@ function getMealFromLS() {
 function removeMealFromlS(mealID) {
     const mealIds = getMealFromLS();
 
-    localStorage.setItem('mealIds', JSON.stringify(mealIds.filter((id) => id !== mealID ? id : '')));
+    localStorage.setItem(
+        "mealIds",
+        JSON.stringify(mealIds.filter((id) => id !== mealID))
+    );
+    
+    fetchFavMeals();
 }
 
 async function fetchFavMeals() {
