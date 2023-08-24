@@ -38,21 +38,33 @@ async function getMealBySearch(meal) {
 }
 
 function addMeal(mealData, random = false) {
-  mealsEl.innerHTML +=
-    `<div class="daily-meal">${
-      random ? `<span class="random">Recipe of the day</span>` : ""
-    }` +
+  const mealEl = document.createElement("div");
+  mealEl.classList.add("daily-meal");
+  mealsEl.appendChild(mealEl);
+
+  mealEl.innerHTML =
+    `${random ? `<span class="random">Recipe of the day</span>` : ""}` +
     `<img
       src="${mealData.strMealThumb}"
       alt="${mealData.Meal}"
-    /></div>`;
+    />`;
 
-  mealsEl.innerHTML += `<div class="rating"><h5>${mealData.strMeal}</h5>
-    <button class="fav-btn">
-        <i class="fas fa-heart"></i>
-    </button></div>`;
+  const ratingEl = document.createElement("div");
+  const h5El = document.createElement("h5");
+  const btnEl = document.createElement("button");
+  const iEl = document.createElement("i");
 
-  const btnEL = document.querySelector(".fav-btn");
+  h5El.textContent = `${mealData.strMeal}`;
+  btnEl.classList.add("fav-btn");
+  iEl.classList.add("fas", "fa-heart");
+  ratingEl.classList.add("rating");
+
+  ratingEl.appendChild(h5El);
+  ratingEl.appendChild(btnEl);
+  btnEl.appendChild(iEl);
+  mealsEl.appendChild(ratingEl);
+
+  let btnEL = document.querySelector(".fav-btn");
 
   btnEL.addEventListener("click", () => {
     addMealToLS(mealData.idMeal);
@@ -133,6 +145,7 @@ async function fetchFavMeals() {
 }
 
 searchBtnEl.addEventListener("click", async () => {
+  mealsEl.innerHTML = '';
   const input = searchInputEl.value;
   const search = await getMealBySearch(input);
 
