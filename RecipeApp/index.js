@@ -64,9 +64,7 @@ function addMeal(mealData, random = false) {
   btnEl.appendChild(iEl);
   mealsEl.appendChild(ratingEl);
 
-  let btnEL = document.querySelector(".fav-btn");
-
-  btnEL.addEventListener("click", () => {
+  btnEl.addEventListener("click", () => {
     addMealToLS(mealData.idMeal);
     fetchFavMeals();
   });
