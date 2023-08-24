@@ -41,21 +41,11 @@ function addMeal(mealData, random = false) {
     const ls = getMealFromLS();
 
     btnEL.addEventListener('click', () => {
-        if(!ls.includes(mealData.idMeal)) {
             addMealToLS(mealData.idMeal)
-            fetchFavMeals();
-        }
-        else {
-            
-        }
+            fetchFavMeals();     
     })
 }
 
-
-
-function onprogress() {
-
-}
 
 function addMealToFav(mealData) {
     const liEl = document.createElement('li');
@@ -94,7 +84,12 @@ function addMealToFav(mealData) {
 function addMealToLS(mealID) {
     const mealIds = getMealFromLS();
 
-    localStorage.setItem('mealIds', JSON.stringify([...mealIds, mealID]));
+        if(!mealIds.includes(mealID)) {
+            localStorage.setItem('mealIds', JSON.stringify([...mealIds, mealID]));
+        }
+        else {
+            return null;
+        }
 }
 
 function getMealFromLS() {
