@@ -7,6 +7,8 @@
 body {
     font-family: 'Poppins', sans-serif;
     background-color: aqua;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .notes {
@@ -14,6 +16,7 @@ body {
     width: 400px;
     height: 400px;
     margin: 10px;
+    margin-bottom: 40px;
 }
 
 .notes .tools {
@@ -56,4 +59,16 @@ body {
 
 .notes .hidden {
     display: none;
+}
+
+.add {
+    background-color:rgb(29, 209, 44);
+    border-radius: 3px;
+    border: none;
+    color: white;
+    padding: 0.5rem 1rem;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    cursor: pointer;
 }
