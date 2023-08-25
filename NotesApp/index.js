@@ -22,26 +22,28 @@ function createNote() {
   let mainEl = notes.querySelector(".main");
   let textareaEl = notes.querySelector("textarea");
 
-  editBtn.addEventListener("click", () => {
-    mainEl.classList.toggle("hidden");
-    textareaEl.classList.toggle("hidden");
-    const content = textareaEl.value;
-
-    mainEl.innerHTML = marked.parse(content);
-  });
-
   notes.addEventListener("click", (e) => {
     if(e.target.classList.contains('fa-trash')) {
         notes.remove();
     }
-    
-  });
+    else if(e.target.classList.contains('fa-edit')) 
+    {
+        mainEl.classList.toggle("hidden");
+        textareaEl.classList.toggle("hidden");
+        const content = textareaEl.value;
 
-  textareaEl.addEventListener("click", (e) => {
+        mainEl.innerHTML = marked.parse(content);
+    }
+
     const { value } = e.target;
+
+    if(value === null || value === undefined) {
+        return '';
+    }
 
     mainEl.innerHTML = marked.parse(value);
   });
+
 }
 
 addBtn.addEventListener("click", () => {
