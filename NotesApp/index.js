@@ -36,12 +36,11 @@ function createNote() {
     }
 
     const { value } = e.target;
+    mainEl.innerHTML = marked.parse(value);
 
     if(value === null || value === undefined) {
         return '';
     }
-
-    mainEl.innerHTML = marked.parse(value);
   });
 
 }
