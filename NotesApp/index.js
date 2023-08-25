@@ -30,16 +30,20 @@ function createNote() {
     {
         mainEl.classList.toggle("hidden");
         textareaEl.classList.toggle("hidden");
-        const content = textareaEl.value;
+        const { valueEl } = e.target;
+        const content = textareaEl.valueEl;
 
-        mainEl.innerHTML = marked.parse(content);
+        textareaEl.innerHTML = marked.parse(content);
+        if(valueEl === null || valueEl === undefined) {
+            return '';
+        }
     }
-
-    const { value } = e.target;
-    mainEl.innerHTML = marked.parse(value);
-
-    if(value === null || value === undefined) {
-        return '';
+    else if(e.target.contains(textareaEl)) {
+        const content = textareaEl.valueEl;
+        textareaEl.innerHTML = marked.parse(content);
+        if(valueEl === null || valueEl === undefined) {
+            return '';
+        }
     }
   });
 
