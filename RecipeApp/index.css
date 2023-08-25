@@ -69,6 +69,7 @@ h3 {
     width: 90px;
     text-align: center;
     position: relative;
+    cursor: pointer;
 }
 
 .meal-ul::-webkit-scrollbar {
@@ -102,6 +103,7 @@ h3 {
     max-width: 100%;
     border-radius: 10px;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .meals .daily-meal span {
@@ -198,4 +200,51 @@ ul {
 
 .random {
     padding: 10px;
+}
+
+.meal-info-container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0,0,0,0.5);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.meal-info {
+    background-color: #fff;
+    border-radius: 5px;
+    padding: 0 2rem;
+    position: relative;
+    overflow: auto;
+    max-height: 100vh;
+    max-width: 600px;
+    width: 100%;
+    box-sizing: content-box;
+}
+
+.meal-info h1 {
+    text-align: center;
+}
+
+.meal-info img {
+    max-width: 100%;
+}
+
+.meal-info #close-popup {
+    position: absolute;
+    background-color: transparent;
+    top: 1rem;
+    right: 1rem;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+    pointer-events: none;
 }

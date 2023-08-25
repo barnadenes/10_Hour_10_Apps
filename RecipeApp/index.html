@@ -17,11 +17,10 @@
   </head>
   <body>
     <div class="mobile-container">
-
-        <!-- Navbar -->
+      <!-- Navbar -->
 
       <header>
-        <input type="text" placeholder="Search..." id="search-term"/>
+        <input type="text" placeholder="Search..." id="search-term" />
         <button id="search">
           <i class="fa-solid fa-magnifying-glass"></i>
         </button>
@@ -31,22 +30,33 @@
 
       <div class="fav-container">
         <h3>Favorite Meals</h3>
-        <ul class="meal-ul" id="meal-ul">
-         
-        </ul>
+        <ul class="meal-ul" id="meal-ul"></ul>
       </div>
 
       <!-- Cards -->
 
       <div class="meals">
         <div class="personal-meal">
-            <div class="card-header">
-                <h3>Personalize</h3>
-                <span><i class="fa-solid fa-x"></i></span>
-            </div>
-            <p>Your recommendations</p>
-            <button type="button">Start Personalizing</button>
-        </div>      
+          <div class="card-header">
+            <h3>Personalize</h3>
+            <span><i class="fa-solid fa-x"></i></span>
+          </div>
+          <p>Your recommendations</p>
+          <button type="button">Start Personalizing</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PopUp -->
+
+    <div class="meal-info-container hidden" id="meal-popup">
+      <div class="meal-info">
+        <button id="close-popup">
+          <i class="fas fa-x"></i>
+        </button>
+        <div class="popup-info">
+          
+        </div>
       </div>
     </div>
     <script src="index.js" defer></script>

@@ -4,6 +4,9 @@ const favoriteEl = document.getElementById("meal-ul");
 const searchBtnEl = document.getElementById("search");
 const searchInputEl = document.getElementById("search-term");
 const mealsEl = document.querySelector(".meals");
+const popUpEl = document.querySelector("#meal-popup");
+const popUpBtnEl = document.querySelector("#close-popup");
+const popUpInfoEl = document.querySelector(".popup-info");
 
 async function getRandomMeal() {
   const resp = await fetch(
@@ -68,6 +71,10 @@ function addMeal(mealData, random = false) {
     addMealToLS(mealData.idMeal);
     fetchFavMeals();
   });
+
+  mealEl.addEventListener("click", () => {
+    updateMealInfo(mealData);
+  });
 }
 
 function addMealToFav(mealData) {
@@ -100,6 +107,10 @@ function addMealToFav(mealData) {
   buttonEl.addEventListener("click", () => {
     removeMealFromlS(mealData.idMeal);
   });
+
+  liEl.addEventListener("click", () => {
+    updateMealInfo(mealData);
+  });
 }
 
 function addMealToLS(mealID) {
@@ -129,6 +140,44 @@ function removeMealFromlS(mealID) {
   fetchFavMeals();
 }
 
+function updateMealInfo(mealData) {
+  popUpInfoEl.innerHTML = "";
+  const ingredients = [];
+
+  for (let i = 1; i <= 20; i++) {
+    if (mealData["strIngredient" + i]) {
+      ingredients.push(
+        `${mealData["strIngredient" + i]} - ${mealData["strMeasure" + i]}`
+      );
+    } else {
+      break;
+    }
+  }
+
+  const mealEl = document.createElement("div");
+
+  mealEl.innerHTML = `<h1>${mealData.strMeal}</h1>
+    <img src="${mealData.strMealThumb}" alt="${mealData.strMeal}" />
+
+    <p>
+      ${mealData.strInstructions}
+    </p>
+    <h4>Ingredients / Measures</h4>
+    <ul>
+    ${ingredients
+      .map(
+        (ing) => `
+    <li>${ing}</li>
+    `
+      )
+      .join("")}
+    </ul>`;
+
+  popUpInfoEl.appendChild(mealEl);
+
+  popUpEl.classList.remove("hidden");
+}
+
 async function fetchFavMeals() {
   favoriteEl.innerHTML = "";
 
@@ -143,13 +192,19 @@ async function fetchFavMeals() {
 }
 
 searchBtnEl.addEventListener("click", async () => {
-  mealsEl.innerHTML = '';
+  mealsEl.innerHTML = "";
   const input = searchInputEl.value;
   const search = await getMealBySearch(input);
 
-  search.forEach((meal) => {
-    addMeal(meal);
-  });
+  if (meal) {
+    search.forEach((meal) => {
+      addMeal(meal);
+    });
+  }
+});
+
+popUpBtnEl.addEventListener("click", () => {
+  popUpEl.classList.add("hidden");
 });
 
 getRandomMeal();
