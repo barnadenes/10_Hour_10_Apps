@@ -17,36 +17,23 @@ function createNote() {
 
   document.body.appendChild(notes);
 
-  let editBtn = document.querySelector(".edit");
-  let deletetBtn = document.querySelector(".delete");
   let mainEl = notes.querySelector(".main");
   let textareaEl = notes.querySelector("textarea");
 
   notes.addEventListener("click", (e) => {
-    if(e.target.classList.contains('fa-trash')) {
-        notes.remove();
-    }
-    else if(e.target.classList.contains('fa-edit')) 
-    {
-        mainEl.classList.toggle("hidden");
-        textareaEl.classList.toggle("hidden");
-        const { valueEl } = e.target;
-        const content = textareaEl.valueEl;
+    if (e.target.classList.contains("fa-trash")) {
+      notes.remove();
+    } else if (e.target.classList.contains("fa-edit")) {
+      const content = textareaEl.value;
+      mainEl.classList.toggle("hidden");
+      textareaEl.classList.toggle("hidden");
 
-        textareaEl.innerHTML = marked.parse(content);
-        if(valueEl === null || valueEl === undefined) {
-            return '';
-        }
-    }
-    else if(e.target.contains(textareaEl)) {
-        const content = textareaEl.valueEl;
-        textareaEl.innerHTML = marked.parse(content);
-        if(valueEl === null || valueEl === undefined) {
-            return '';
-        }
-    }
+      mainEl.innerHTML = marked.parse(content);
+      if (content === null || content === undefined) {
+        return "";
+      }
+    } 
   });
-
 }
 
 addBtn.addEventListener("click", () => {
