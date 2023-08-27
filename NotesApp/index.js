@@ -21,16 +21,19 @@ function createNote(text = "") {
 
   const mainEl = notes.querySelector(".main");
   const textareaEl = notes.querySelector("textarea");
-  addLS(textareaEl.value);
 
   // REMOVE
   notes.addEventListener("click", (e) => {
     if (e.target.classList.contains("fa-trash")) {
       notes.remove();
       removeLS(notes);
-
-      // EDIT-PARSE
-    } else if (e.target.classList.contains("fa-edit")) {
+    }});
+  // EDIT-PARSE
+  notes.addEventListener('click', (e) => {
+    if (e.target.classList.contains("fa-edit")) {
+      if (textareaEl.value === "") {
+        return null;
+      }
       const content = textareaEl.value;
       mainEl.classList.toggle("hidden");
       textareaEl.classList.toggle("hidden");
@@ -53,7 +56,7 @@ addBtn.addEventListener("click", () => {
 function getLS() {
   const textArr = JSON.parse(localStorage.getItem("text"));
 
-  return textArr === null  ? [] : textArr;
+  return textArr === null ? [] : textArr;
 }
 
 // ADD
