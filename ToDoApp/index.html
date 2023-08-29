@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NotesApp</title>
+    <link rel="stylesheet" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link href="https://fonts.cdnfonts.com/css/8bit-wonder" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>ToDo</h1>
+    </header>
+    <div class="container perspective">
+      <div class="card first">
+        <div class="input-container">
+          <i class="fa-solid fa-chevron-down"></i>
+          <form action="" class="formEl">
+            <input
+              type="text"
+              name="todo-input"
+              id="todo-input"
+              placeholder="What to add?..."
+            />
+          </form>
+        </div>
+        <hr />
+        <div class="todo-list">
+          <ul></ul>
+        </div>
+      </div>
+      <div class="card second"></div>
+      <div class="card third"></div>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
