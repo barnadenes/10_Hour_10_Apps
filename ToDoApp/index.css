@@ -62,6 +62,7 @@ header h1 {
     left: 50%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     background: #fff;
+    overflow: scroll;
 }
 
 .perspective {
@@ -72,6 +73,7 @@ header h1 {
 .first {
     transform: translate3d(-50%, -50%, 40px);
     z-index: 3;
+    overflow-x: hidden;
 }
 
 .second {
@@ -99,4 +101,18 @@ header h1 {
 .todo-list ul {
     width: 100%;
     text-align: center;
+}
+
+.todo-list ul li {
+    cursor: pointer;
+}
+
+.cross {
+    color: lightgray;
+    text-decoration: line-through;
+}
+
+small {
+    position: relative;
+    top: -35%;
 }
