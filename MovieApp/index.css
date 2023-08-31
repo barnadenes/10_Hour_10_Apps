@@ -15,7 +15,6 @@ body {
 main {
     display: flex;
     flex-wrap: wrap;
-
 }
 
 .movie-card {
@@ -68,4 +67,23 @@ main {
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+}
+
+.search-bar {
+    background-color: #373b69;
+    padding: 2rem;
+    display: flex;
+    justify-content: end;
+}
+
+.search {
+    padding: 1rem;
+    width: 250px;
+    background-color: transparent;
+    border-radius: 50px;
+    border-color: cornflowerblue;
+    border-width: 3px;
+    outline: none;
+    color: #b3b3b3;
+    font-size: 1em;
 }
