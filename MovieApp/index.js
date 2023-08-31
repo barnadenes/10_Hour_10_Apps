@@ -22,7 +22,7 @@ function searchMovies(movies) {
   mainEl.innerHTML = "";
 
   movies.forEach((movie) => {
-    const { title, vote_average, poster_path } = movie;
+    const { title, vote_average, poster_path, overview } = movie;
 
     mainEl.innerHTML += `
     <div class="movie-card">
@@ -31,6 +31,7 @@ function searchMovies(movies) {
             <h4>${title}</h4>
             <span class="${rateColor(vote_average)}">${vote_average}</span>
         </div>
+        <div class="overview">${overview}</div>
     </div>`;
 
     document.body.appendChild(mainEl);
@@ -55,6 +56,6 @@ formEl.addEventListener("submit", (e) => {
   if(searchValue) {
     getMovies(SEARCHAPI + searchValue);
 
+}
     searchValue.value = '';
-  }
 });
