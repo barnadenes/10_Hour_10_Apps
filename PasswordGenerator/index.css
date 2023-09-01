@@ -58,6 +58,9 @@ main h3 {
     position: relative;
     left: 240px;
     font-size: 20px;
+    background-color: #36096d;
+    padding: 5px;
+    cursor: pointer;
 }
 
 .settings-container {
