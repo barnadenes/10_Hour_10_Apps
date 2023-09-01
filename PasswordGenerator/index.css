@@ -6,4 +6,99 @@
 
 body {
     font-family: 'Poppins', sans-serif;
+    background-color: #36096d;
+    background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 } 
+
+main {
+    overflow: hidden;
+    width: 50%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px #36096d;
+    background-color: #36096d;
+    background-image: linear-gradient(315deg, #36096d 0%, #37d5d6 74%);
+}
+
+main h3 {
+    background-color: #36096d;
+    color: whitesmoke;
+    margin: 0 auto;
+    text-align: center;
+    padding: 15px;
+}
+
+.input-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.input-icon input {
+    padding: 5px;
+    width: 250px;
+    border-radius: 10px;
+    outline: none;
+    background-color: #8ee0f5;
+    padding: 10px 10px;
+    color: black;
+    font-weight: bolder;
+    border: 1px solid #36096d;
+}
+
+.input-icon i {
+    position: relative;
+    left: 240px;
+    font-size: 20px;
+}
+
+.settings-container {
+    padding: 20px;
+}
+
+.divider {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.divider input[type="number"] {
+    padding: 5px;
+    width: 100px;
+    border-radius: 10px;
+    outline: none;
+    background-color: #8ee0f5;
+    padding: 10px 10px;
+    color: black;
+    font-weight: bolder;
+    border: 1px solid #36096d;
+}
+
+.divider input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.generate {
+    background-color: #36096d;
+    color: whitesmoke;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    width: 100%;
+    font-size: larger;
+    outline: none;
+    border: none;
+}
