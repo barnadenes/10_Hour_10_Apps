@@ -82,6 +82,7 @@ main h3 {
     color: black;
     font-weight: bolder;
     border: 1px solid #36096d;
+    text-align: center;
 }
 
 .divider input[type="checkbox"] {
@@ -98,7 +99,8 @@ main h3 {
     padding: 20px;
     cursor: pointer;
     width: 100%;
-    font-size: larger;
+    font-weight: bolder;
+    font-size: 20px;
     outline: none;
     border: none;
 }
