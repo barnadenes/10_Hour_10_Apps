@@ -1,6 +1,7 @@
 const lengthNum = document.querySelector('.pLength');
 const passwordInput = document.querySelector('.password');
 const generateBtn = document.querySelector('.generate');
+const iconEl = document.querySelector('i');
 const upperBtn = document.querySelector('.upper');
 const lowerBtn = document.querySelector('.lower');
 const numberBtn = document.querySelector('.number');
@@ -11,34 +12,13 @@ const lowerLetters = "abcdefghijklmnopqrstuvwxyz";
 const numbers = "0123456789";
 const symbols = "!@#$%^&*()_+=";
 
-function getLowercase() {
-    return lowerLetters[Math.floor(Math.random() * lowerLetters.length)];
-}
-
-function getUppercase() {
-    return upperLetters[Math.floor(Math.random() * upperLetters.length)];
-}
-
-function getNumber() {
-    return numbers[Math.floor(Math.random() * numbers.length)];
-}
-
-function getSymbol() {
-    return symbols[Math.floor(Math.random() * symbols.length)];
-}
-
-
 function generatePassword() {
     const password = [];
     let num = '';
 
-    if(lengthNum.value === null || parseInt(lengthNum.value <= 4)) {
+    if(lengthNum.value === null || lengthNum.value <= 5) {
         passwordInput.value = '';
-        return passwordInput.value = 'You should give a min 4 length number';
-    }
-    if(!upperBtn.checked || !lowerBtn.checked || !numberBtn.checked || !symbolBtn.checked) {
-        passwordInput.value = '';
-        return passwordInput.value = 'Please check a box';
+        return passwordInput.value = 'min 5 chars & check 1 box atleast';
     }
     
     for(let i = 0; i < lengthNum.value; i++) {
@@ -67,6 +47,11 @@ function generatePassword() {
 
 generateBtn.addEventListener('click', () => {
     generatePassword();
+})
+
+iconEl.addEventListener('click', () => {
+    passwordInput.select();
+    navigator.clipboard.writeText(passwordInput.value);
 })
 
 
