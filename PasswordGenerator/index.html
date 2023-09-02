@@ -24,28 +24,28 @@
       <h3>Password Generator</h3>
       <div class="input-icon">
         <i class="fab fa-book-open icon"></i>
-        <input type="text" />
+        <input type="text" maxlength="32" class="password"/>
       </div>
       <div class="settings-container">
         <div class="divider">
             <span>Password Length</span>
-            <input type="number" />
+            <input type="number" max="32" class="pLength"/>
         </div>
         <div class="divider">
             <span>Include uppercase letters</span>
-            <input type="checkbox" />
+            <input type="checkbox" class="upper"/>
         </div>
         <div class="divider">
             <span>Include lowercase letters</span>
-            <input type="checkbox" />
+            <input type="checkbox" class="lower"/>
         </div>
         <div class="divider">
             <span>Include numbers</span>
-            <input type="checkbox" />
+            <input type="checkbox" class="number"/>
         </div>
         <div class="divider">
             <span>Include symbols</span>
-            <input type="checkbox" />
+            <input type="checkbox" class="symbol"/>
         </div>
       </div>
       <button class="generate">Generate password</button>
