@@ -1,4 +1,4 @@
-const releaseDate = new Date('2023-08-13T06:30:00').getTime();
+const releaseDate = new Date('2023-09-24T06:30:00').getTime();
 
 // Getters
 const ElDays = document.getElementById("days");
